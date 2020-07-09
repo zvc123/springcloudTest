@@ -1,0 +1,17 @@
+server:
+  port: 12000
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/zvc123/springcloud-config.git
+          username: zvc123
+          password: ZvC.2900
+eureka: 
+  client: 
+   service-url: 
+     defaultZone: http://127.0.0.1:10086/eureka
+     
