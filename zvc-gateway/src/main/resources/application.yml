@@ -5,6 +5,8 @@ spring:
   name: api-gateway
  cloud:
   gateway:
+    #default-filters:
+     #- AddResponseHeader=name, itcast
     routes:
     #路由id,可以随意写
      - id: user-service-route
@@ -12,7 +14,14 @@ spring:
        uri: lb://user-service
     #路由断言 可以配置映射路径
        predicates:
-         - Path=/user/**        
+         - Path=/api/user/**  
+          #- Path=/**
+       filters: # 添加请求路径的前缀
+       #- PrefixPath=/user
+         - StripPrefix=1
+         - MyParam=name
+       
+                  
 eureka:
  client:
   service-url:
